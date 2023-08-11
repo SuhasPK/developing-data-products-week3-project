@@ -1,0 +1,57 @@
+---
+title: "Plotly - an interactive plot tool in R"
+author: "Suhas P K"
+date: "2023-08-11"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Objective
+- This project was created as part of the Developing Data Products course of the Coursera [Data Science Specialisation](https://www.coursera.org/specializations/jhu-data-science).
+
+- The goal of the project is to create a web page presentation using R Markdown that features a plot created with Plotly, and to host the resulting web page on either GitHub Pages, RPubs, or NeoCities.
+
+---
+
+```{r libraries, echo=FALSE, message=FALSE}
+if (!require(plotly)){
+  install.packages("plotly")
+  library(plotly)
+}
+```
+- A classic diamond data set is used for this presentation.
+
+- Here we will try to understand how prices of the diamond varies with the carat.
+
+- A simple scatter plot is enough to answer the above question.
+
+---
+```{r data, echo= TRUE, message=FALSE}
+
+d <- diamonds[sample(nrow(diamonds), 1000), ]
+
+
+fig <- plot_ly(
+
+  d, x = ~carat, y = ~price,
+
+  # Hover text:
+
+  text = ~paste("Price: ", price, '$<br>Cut:', cut),
+
+  color = ~cut, size = ~carat
+
+)
+
+```
+
+---
+
+```{r plot, warning=FALSE, message=FALSE}
+fig
+```
+
+

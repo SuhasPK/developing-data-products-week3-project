@@ -4,7 +4,6 @@ author: "Suhas P K"
 date: "`r Sys.Date()`"
 output: ioslides_presentation
 ---
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 ```
@@ -16,12 +15,17 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ---
 
-```{r libraries, echo=FALSE, message=FALSE}
+A simple way to make sure if the packages are not installed, this method can be implemented.
+
+```{r libraries, echo=TRUE, message=FALSE}
 if (!require(plotly)){
   install.packages("plotly")
   library(plotly)
 }
 ```
+
+## Data set and Visualization
+
 - A classic diamond data set is used for this presentation.
 
 - Here we will try to understand how prices of the diamond varies with the carat.
@@ -30,12 +34,11 @@ if (!require(plotly)){
 
 - A simple scatter plot is enough to answer the above question.
 
----
 
-The code is: 
+## A simple program 
 
+- A simple code chunk where `diamonds` data set is used to plot.
 ```{r data, echo= TRUE, message=FALSE}
-
 d <- diamonds[sample(nrow(diamonds), 1000), ]
 fig <- plot_ly(
   d, x = ~carat, y = ~price,
@@ -43,10 +46,9 @@ fig <- plot_ly(
   text = ~paste("Price: ", price, '$<br>Cut:', cut),
   color = ~cut, size = ~carat
 )
-
 ```
 
----
+## Scattering PLot
 
 ```{r plot, warning=FALSE, message=FALSE}
 fig

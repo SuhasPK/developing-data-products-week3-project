@@ -26,24 +26,22 @@ if (!require(plotly)){
 
 - Here we will try to understand how prices of the diamond varies with the carat.
 
+- Do note there are types of diamond cuts available.
+
 - A simple scatter plot is enough to answer the above question.
 
 ---
+
+The code is: 
+
 ```{r data, echo= TRUE, message=FALSE}
 
 d <- diamonds[sample(nrow(diamonds), 1000), ]
-
-
 fig <- plot_ly(
-
   d, x = ~carat, y = ~price,
-
   # Hover text:
-
   text = ~paste("Price: ", price, '$<br>Cut:', cut),
-
   color = ~cut, size = ~carat
-
 )
 
 ```
